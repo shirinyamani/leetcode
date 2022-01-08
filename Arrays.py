@@ -21,8 +21,7 @@ def FinduplicatedNum2(nums):
 def FinduplicatedNum3(nums):
     a = Counter(nums)
     return [i for i in a if a[i]>1] 
-
-
+    
 ##find missing
 def FindMissing(nums): 
     return [i for i in range(len(nums) +1) if i not in nums]
