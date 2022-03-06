@@ -69,8 +69,32 @@ def isPalidrome1(head):
 
     return stack == stack[::-1]
 
+#determine if a list has a cylcle in it 
+def hasCycle(head):
+    try:
+        slow = head
+        fast= head.next
 
+        while slow is not fast:
+            slow = slow.next
+            fast = fast.next.next
+        return True
+    except:
 
+        return False
+
+def hasCycle1(head):
+    if not head:
+        return False
+    slow = head
+    fast= head.next
+
+    while slow != fast:
+        if not fast or not fast.next:
+            return False
+        slow= slow.next
+        fast=fast.next.next
+    return True
 
 if __name__ == "__main__":
     #print(removeNode([34,5,6,-7,1], 3))
