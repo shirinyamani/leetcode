@@ -1,5 +1,10 @@
-# LeetCode
-This repo contains answers to **all** level of top most-asked intervew questions. 
-You can find the problems in [this](https://leetcode.com/explore/interview/card/top-interview-questions-easy/) link. 
+# LeetCode 👩‍💻
+This repo contains answers to top most-asked interview questions including all difficulty levels; easy, medium, hard.
+But before you start, I highly recommend you to read my [Data Structure and Algorithms](https://github.com/shirinyamani/DS-Algo) repository, where I provided hands-on detail on each of the data structures and algorithms.
 
-Based on each data structure category questions, I will also provide a summary of techniques and hints!
+Links to each collection:
+- [Easy Collection](https://leetcode.com/explore/interview/card/top-interview-questions-easy/)
+- [Medium Collection](https://leetcode.com/explore/interview/card/top-interview-questions-medium/)
+- [Hard Collection](https://leetcode.com/explore/interview/card/top-interview-questions-hard/) 
+
+
