@@ -1,10 +1,5 @@
 from bisect import bisect_left
 
-class Solution:
-    def getallsub(arr):
-        return [arr[i:j] for i in range(len(arr)) for j in range(len(i+1, len(arr)-1))]
-s=Solution()
-    
 #Longest increasing SubSequence
 def longestincreasingSub(nums): #O(n) 
     if not nums: 
