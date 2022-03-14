@@ -16,3 +16,5 @@ class Solution(object):
         return max(root.val + max(left, right), 0)
 
 ### longest increasing path
+def longestIncreasingPath(matrix):
+    pass
