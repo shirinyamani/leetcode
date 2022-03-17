@@ -15,9 +15,60 @@ class Solution(object):
         self.res = max(self.res, root.val + left+ right)
         return max(root.val + max(left, right), 0)
 
+###Course Schedule
+def courseSchedule(numCourses, prerequisites):
+    graph = [[] for _ in range(numCourses)]
+    visited = [0] * len(numCourses)
+
+    for pair in prerequisites:
+        x, y = pair
+        graph[x].append(y)
+
+    for i in range(numCourses):
+        if not dfs(graph, visited, i):
+            return False
+    return True
+
+def dfs(graph, visited, i):
+    if visited[i] == -1:
+        return False
+    elif visited[i] == 1:
+        return True
+    visited[i] == -1
+
+    for j in graph[i]:
+        if not dfs(graph, visited, j):
+            return False
+    visited[i] =1
+    return True
+
+
 ### longest increasing path
 def longestIncreasingPath(matrix):
-    pass
+    if not matrix or not matrix[0]: return 0
+    r, c = len(matrix), len(matrix[0])
+    dp = [[0]* r for _ in range(c)]
+    
+    
+    def helper(i,j):
+        if not dp[i][j]: #if this position is not visited
+            val = matrix[i][j]
+            dp[i][j] = 1 + max(
+                #left
+                helper(i-1, j) if i and val > matrix[i-1,j] else 0,
+                #right
+                helper(i+1, j) if i < r and val > matrix[i+1, j] else 0,
+                #top
+                helper(i, j -1) if j and val > matrix[i,j-1] else 0,
+                #bottom
+                helper(i, j+1) if j < c and val > matrix[i][j+1] else 0
+            )
+            return dp[i][j]
+
+    return max(helper(x,y) for x in range(r) for y in range(c))
+
+
+
 
 class Solution(object):
     def alienOrder(self, words):

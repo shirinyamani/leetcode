@@ -33,26 +33,85 @@ class TreeNode(object):
 
 # ZigZag Level Order
     def zigzaglevelorder(self,root):
-        curr_level, nxt_level = [],[]
-        lefttoright = True
-        curr_level.append(root)
+        queue, res, level = collections.deque([root]),[],1
 
-        while len(curr_level) >1:
-            temp = curr_level.pop(-1)
-            if lefttoright:
-                if temp.left:
-                    nxt_level.append(temp.left)
-                if temp.right:
-                    nxt_level.append(temp.right)
-            else:
-                if temp.right:
-                    nxt_level.append(temp.right)
-                if temp.left:
-                    nxt_level.append(temp.left)
+        if not root: return []
+        while queue:
+            cur_level = []
 
-        if len(curr_level) == 0:
-            lefttoright = not lefttoright
-            curr_level, nxt_level = nxt_level, curr_level
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                cur_level.add(node.val)
+
+                if node.left: queue.append(node.left)
+                if node.right: queue.append(node.right)
+
+        cur_level = reversed(cur_level) if level %2 ==0 else cur_level
+        res.append(cur_level)
+        level +=1
+
+        return res 
+
+# Populate:
+def populate(root):
+    if not root: return root
+    if root.left:
+        left, right = root.left, root.right
+        populate(left)
+        populate(right)
+    while left:
+        left.next = right 
+        left, right = left.right, right.left
+    return root
+
+#Kth smallest element:
+def smallest(root, k):
+    stack = []
+
+    while True:
+        while root:
+            stack.append(root)
+            root = root.left
+
+        root = stack.pop()
+
+        k -= 1
+        if not k:
+            return root.val
+        root = root.right
+
+#Islands
+def islands(grid):
+    islands = 0
+    for r, row in enumerate(grid):
+        for c, col in enumerate(grid):
+            if grid[r][c] == "1":
+                helper(r,s,grid)
+                islands += 1
+    return islands
+
+def helper(r,c,grid):
+    grid[r][c] = 0
+
+    if r +1 < len(grid) and grid[r+1][c] == "1":
+        helper(r+1, c, grid)
+    if c + 1 < len(grid[0]) and grid[r][c+1] == "1":
+        helper(r, c+1, grid)
+
+    if r - 1 >= 0 and grid[r-1][c] =="1":
+        helper(r-1, c, grid)
+
+    if c-1 >=0 and grid[r][c-1] == "1":
+        helper(r,c-1,grid)
+
+       
+              
+
+
+
+
+
+
 
 #build tree from in-order and pre-order
     def buildtree(self, preorder, inorder):

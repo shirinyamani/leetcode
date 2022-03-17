@@ -17,3 +17,17 @@ class Solution(object): #using Kadane Algo: get the max sum btween the current n
             
         return result
             
+#Word Break
+def wordBreak(s, wordDict):
+    dp = [False] * (len(s)+1)
+    dp[0] = True
+
+    for i in range(1, len(s)+1):
+        for j in range(i):
+            #dp[j] tells us if we have successfully created a word up to that index.
+            # Checking tracker[left] helps us ensure that we're only marking tracker True when words are adjacent.
+            
+            if dp[j] and dp[j:i] in wordDict:
+                dp[i] = True
+
+    return dp[-1]

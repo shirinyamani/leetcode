@@ -2,11 +2,6 @@ from bisect import bisect_left
 #Unique path
 class Solution(object):
     def uniquePaths(self, m, n):
-        """
-        :type m: int
-        :type n: int
-        :rtype: int
-        """
         if not m or not n:
             return 0
         
