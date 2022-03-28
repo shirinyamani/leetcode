@@ -65,16 +65,19 @@ def populate(root):
     return root
 
 #Kth smallest element:
+#Recurssive: using the definiton of inorder traversal
+def smallest(root,k):
+    def inorder(root):
+        return inorder(root.left) + [root.val] + inorder(root.right) if root else []
+    return inorder(root)[k-1]
+#Iteretive: same solution as above but in an iterative way via stack
 def smallest(root, k):
     stack = []
-
     while True:
         while root:
             stack.append(root)
             root = root.left
-
         root = stack.pop()
-
         k -= 1
         if not k:
             return root.val
@@ -86,7 +89,7 @@ def islands(grid):
     for r, row in enumerate(grid):
         for c, col in enumerate(grid):
             if grid[r][c] == "1":
-                helper(r,s,grid)
+                helper(r,c,grid)
                 islands += 1
     return islands
 

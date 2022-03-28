@@ -8,12 +8,12 @@ class Solution(object): #using Kadane Algo: get the max sum btween the current n
         result = max_pro #store the max es of the nums in result
         
         for i in range(1, len(nums)): #1 cuz the first num is already done the max between itself n itself
-            current = nums[i] #current num index
+            current = nums[i] #current num index  
             temp_max = max(current, current*max_pro, current*min_pro)
             min_pro = min(current, current*max_pro, current*min_pro)
             max_pro = temp_max
             
-            result = max(result, max_pro)
+            result = max(result, max_pro) #update the max_pro
             
         return result
             
