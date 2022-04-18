@@ -107,15 +107,6 @@ def helper(r,c,grid):
     if c-1 >=0 and grid[r][c-1] == "1":
         helper(r,c-1,grid)
 
-       
-              
-
-
-
-
-
-
-
 #build tree from in-order and pre-order
     def buildtree(self, preorder, inorder):
         if not preorder or inorder:
